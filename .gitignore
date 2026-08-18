@@ -6,6 +6,7 @@ __pycache__/
 .mypy_cache/
 
 # Virtual environments
+SDP/
 venv/
 .venv/
 env/

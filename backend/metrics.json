@@ -1,0 +1,27 @@
+{
+  "accuracy": 78.11,
+  "macroPrecision": 73.21,
+  "macroRecall": 69.55,
+  "macroF1": 71.02,
+  "weightedF1": 83.10,
+
+  "perClass": [
+    {"name":"AK","fullName":"Actinic keratoses","precision":62,"recall":55,"f1":58,"support":327},
+    {"name":"BCC","fullName":"Basal cell carcinoma","precision":71,"recall":65,"f1":68,"support":514},
+    {"name":"BKL","fullName":"Benign keratosis","precision":73,"recall":70,"f1":71,"support":1099},
+    {"name":"DF","fullName":"Dermatofibroma","precision":68,"recall":52,"f1":59,"support":115},
+    {"name":"MEL","fullName":"Melanoma","precision":65,"recall":60,"f1":62,"support":1113},
+    {"name":"NV","fullName":"Melanocytic nevi","precision":89,"recall":93,"f1":91,"support":6705},
+    {"name":"VASC","fullName":"Vascular lesions","precision":82,"recall":78,"f1":80,"support":142}
+  ],
+
+  "confusionMatrix": [
+    [180,25,40,5,52,20,5],
+    [15,334,30,8,67,50,10],
+    [20,30,769,10,120,130,20],
+    [5,8,15,60,12,10,5],
+    [30,45,80,8,668,260,22],
+    [12,20,50,5,88,6476,54],
+    [3,5,8,2,13,0,111]
+  ]
+}

@@ -1,0 +1,202 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@layer base {
+  :root,
+  [data-theme="dark"] {
+    --background: 225 35% 6%;
+    --foreground: 210 40% 96%;
+
+    --card: 225 26% 10%;
+    --card-foreground: 210 40% 96%;
+
+    --popover: 225 26% 10%;
+    --popover-foreground: 210 40% 96%;
+
+    --primary: 199 89% 48%;
+    --primary-foreground: 240 10% 3.9%;
+
+    --secondary: 225 22% 14%;
+    --secondary-foreground: 210 40% 90%;
+
+    --muted: 225 18% 12%;
+    --muted-foreground: 215 16% 58%;
+
+    --accent: 82 85% 55%;
+    --accent-foreground: 240 10% 3.9%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 210 40% 98%;
+
+    --success: 142 71% 45%;
+    --success-foreground: 240 10% 3.9%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 240 10% 3.9%;
+
+    --border: 220 20% 18%;
+    --input: 220 20% 18%;
+    --ring: 199 89% 48%;
+
+    --radius: 0.8rem;
+
+    --chart-1: 199 89% 48%;
+    --chart-2: 82 85% 55%;
+    --chart-3: 38 92% 50%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 0 72% 51%;
+    --chart-6: 170 70% 50%;
+    --chart-7: 320 70% 55%;
+
+    --sidebar: 225 28% 8%;
+    --sidebar-foreground: 210 40% 96%;
+    --sidebar-border: 220 20% 14%;
+    --sidebar-accent: 199 89% 48%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply text-foreground antialiased;
+    font-family: 'Inter', sans-serif;
+    background:
+      radial-gradient(circle at 15% 20%, rgba(0,140,255,0.08), transparent 35%),
+      radial-gradient(circle at 80% 70%, rgba(0,255,200,0.05), transparent 30%),
+      radial-gradient(circle at 70% 10%, rgba(140,0,255,0.05), transparent 30%),
+      hsl(var(--background));
+  }
+
+  h1, h2, h3, h4, h5 {
+    font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: -0.02em;
+  }
+
+  code, .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    @apply rounded-2xl border border-white/10;
+    background: rgba(16, 24, 42, 0.58);
+    backdrop-filter: blur(24px);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.04),
+      0 8px 40px rgba(0,0,0,0.28);
+  }
+
+  .glass-card-hover {
+  @apply glass-card transition-all duration-300;
+}
+
+.glass-card-hover:hover {
+  border-color: hsl(199 89% 48% / 0.45);
+  transform: translateY(-4px) scale(1.01);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.05),
+    0 0 30px hsl(199 89% 48% / 0.12),
+    0 18px 45px rgba(0,0,0,0.35);
+}
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent;
+  }
+
+  .gradient-text-lime {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-accent to-[hsl(142,71%,45%)];
+  }
+
+  .pulse-dot {
+    @apply relative;
+  }
+
+  .pulse-dot::before {
+    content: '';
+    @apply absolute w-2 h-2 rounded-full bg-accent;
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-glow {
+    0%,100% {
+      opacity: 1;
+      box-shadow: 0 0 5px hsl(82 85% 55% / .6);
+    }
+    50% {
+      opacity: .5;
+      box-shadow: 0 0 18px hsl(82 85% 55% / .25);
+    }
+  }
+
+  .upload-zone {
+    @apply border-2 border-dashed rounded-2xl transition-all duration-300 cursor-pointer;
+    border-color: hsl(var(--border));
+  }
+
+  .upload-zone:hover {
+    border-color: hsl(199 89% 48% / .45);
+    background: hsl(199 89% 48% / .04);
+  }
+
+  .upload-zone.drag-over {
+    border-color: hsl(199 89% 48%);
+    background: hsl(199 89% 48% / .08);
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(220 15% 22%);
+    border-radius: 999px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(220 15% 30%);
+  }
+}
+.scan-line {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.scan-line::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 180px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(0, 180, 255, 0.06),
+    rgba(0, 255, 255, 0.08),
+    transparent
+  );
+  filter: blur(24px);
+  animation: scanMove 7s linear infinite;
+}
+
+@keyframes scanMove {
+  from {
+    transform: translateY(-220px);
+  }
+  to {
+    transform: translateY(110vh);
+  }
+}

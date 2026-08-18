@@ -1,0 +1,11 @@
+[
+  {
+    "name": "DenseNet121_v2",
+    "val_accuracy": 0.7811,
+    "train_accuracy": 0.7212,
+    "val_loss": 0.9956,
+    "params": 7305799,
+    "rank": 1,
+    "winner": true
+  }
+]
